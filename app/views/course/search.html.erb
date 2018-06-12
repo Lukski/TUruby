@@ -1,0 +1,13 @@
+<h1>Search for some Courses</h1>
+
+<%= render "searchable/search" %>
+
+<ul>
+  <% if @results != nil %>
+    <% @results.each do |course| %>
+      <li>
+        <%= course["title"] %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

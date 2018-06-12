@@ -1,0 +1,2 @@
+module SearchableHelper
+end

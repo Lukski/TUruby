@@ -1,0 +1,10 @@
+<%= form_with local: true, method: :get do |form| %>
+  <p>
+    <%= form.label :serach %><br>
+    <%= form.text_field :q, value: @query %>
+  </p>
+
+  <p>
+    <%= form.submit :search %>
+  </p>
+<% end %>

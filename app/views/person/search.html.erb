@@ -1,0 +1,15 @@
+<h1>Search for some people</h1>
+
+<%= render "searchable/search" %>
+
+<ul>
+  <% if @results != nil %>
+    <% @results.each do |person| %>
+      <li>
+        <%= person["firstname"] %>
+        <%= person["lastname"] %>
+        <%= link_to "details", controller: "person", action: "detail", id: person["id"] %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

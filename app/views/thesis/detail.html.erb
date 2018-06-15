@@ -1,3 +1,25 @@
 <h1>
   <%= @result.xpath("//thesistype").first.content %>
 </h1>
+
+<h2>
+  <%= @result.xpath("//title//de").first.content %>
+</h2>
+
+<p>
+  Institut: <%= @result.xpath("//institutename//de").first.content %>
+</p>
+
+<p>
+  Fakultät: <%= @result.xpath("//facultyname//de").first.content %>
+</p>
+
+<p>
+  Betreuer:
+  <%= @result.xpath("//advisor//prefixtitle").first.content %>
+  <%= @result.xpath("//advisor//givenname").first.content %>
+  <%= @result.xpath("//advisor//familyname").first.content %>
+</p>
+
+Keywords:
+<%= @result.xpath("//keywords//de").first.content %>

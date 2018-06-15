@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'person#search'
   get 'person/search'
   get 'person/detail/:id', to: 'person#detail'
+  get 'favorites/create', to: 'favorites#create'
 
   get 'course/search'
 

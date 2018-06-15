@@ -4,10 +4,23 @@
 
 <ul>
   <% if @results != nil %>
-    <% @results.each do |course| %>
-      <li>
-        <%= course["title"] %>
-      </li>
-    <% end %>
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Kursname</th>
+        <th>Beschreibung</th>
+        <th>Anzeigen</th>
+        <th>Favoriten</th>
+      </tr>
+      <% @results.each do |course| %>
+        <tr>
+          <td><%= course["title"] %></td>
+          <td><%= course["short"] %></td>
+          <td>x</td>
+          <td><%= link_to "favorite", controller: "favorites", action: "create", object_type: "course", tiss_id: course["id"] %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
 </ul>
+
+

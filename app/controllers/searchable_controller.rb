@@ -23,7 +23,13 @@ class SearchableController < ApplicationController
           @ids << self.class.get_id_from_json(result)
         end
       end
-      #@favorites = self.class.get_favorites ids
+      @favorites = current_user.favorites.where(object_type: self.class.object_type, tiss_id: @ids)
+      @favorite_ids=[]
+      if @favorites
+        @favorites.each do |result|
+          @favorite_ids << result.tiss_id.to_i
+        end
+      end
     end
   end
 
@@ -34,6 +40,10 @@ class SearchableController < ApplicationController
       uri = URI(@tissquery)
       @result = Nokogiri::HTML(open(uri))
     end
+  end
+
+  def self.get_favorites()
+    current_user.favorites.where(object_type: self.class.object_type)
   end
 
   def self.get_id_from_json(result)

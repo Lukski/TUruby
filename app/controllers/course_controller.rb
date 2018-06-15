@@ -7,6 +7,10 @@ class CourseController < SearchableController
     "https://tiss.tuwien.ac.at/api/thesis/#{id}"
   end
 
+  def self.object_type()
+    :person
+  end
+
   def self.get_id_from_json(result)
     url = result["detail_url"]
     get_course_id_from_url url

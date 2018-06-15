@@ -1,0 +1,14 @@
+<h1>Search for some theses</h1>
+
+<%= render "searchable/search" %>
+
+<ul>
+  <% if @results != nil %>
+    <% @results.each do |thesis| %>
+      <li>
+        <%= thesis["id"] %>
+        <%= thesis["short"] %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

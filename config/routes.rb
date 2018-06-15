@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   get 'person/detail/:id', to: 'person#detail'
 
   get 'course/search'
+
+  get 'thesis/search'
+  get 'thesis/detail/:id', to: 'thesis#detail'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

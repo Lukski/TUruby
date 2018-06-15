@@ -7,6 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('.table').DataTable();
+        } );
+    </script>
   </head>
 
   <body>
@@ -28,16 +38,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li>
-              <a href="#">Startpage</a>
+                <%= link_to "Personen", controller: "person", action: "search" %>
             </li>
             <li>
-              <a href="#">People</a>
+              <%= link_to "Lehrveranstaltungen", controller: "course", action: "search" %>
             </li>
             <li>
-              <a href="#">Courses</a>
+              <%= link_to "Arbeiten", controller: "thesis", action: "search" %>
             </li>
             <li>
-              <a href="#">Favorites</a>
+              <%= link_to "Favoriten", controller: "favorites", action: "index" %>
             </li>
           </ul>
         </div>

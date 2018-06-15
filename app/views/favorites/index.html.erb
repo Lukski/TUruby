@@ -1,0 +1,10 @@
+<% if @favorite_persons != nil %>
+  <ul>
+  <% @favorite_persons.each do |favorite| %>
+    <li>
+      <%= favorite.xpath("//firstname").first.content %>
+      <%= favorite.xpath("//lastname").first.content %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

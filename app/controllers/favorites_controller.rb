@@ -2,7 +2,14 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @results = current_user.favorites
+    person_favorites = PersonController.get_favorites
+    @favorite_persons = []
+    person_favorites.each do |person|
+      query = PersonController.get_detail_url person.tiss_id
+      uri = URI(query)
+      result = Nokogiri::HTML(open(uri))
+      @favorite_persons << result
+    end
   end
 
   def create

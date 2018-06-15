@@ -4,6 +4,8 @@ require 'nokogiri'
 require 'open-uri'
 
 class SearchableController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     @query = params[:q]
     if @query != ""

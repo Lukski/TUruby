@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root 'person#search'
   get 'person/search'
   get 'person/detail/:id', to: 'person#detail'
 

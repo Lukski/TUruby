@@ -9,6 +9,7 @@
         <%= person["firstname"] %>
         <%= person["lastname"] %>
         <%= link_to "details", controller: "person", action: "detail", id: person["id"] %>
+        <%= link_to "favorite", controller: "favorites", action: "create", object_type: "person", tiss_id: person["id"] %>
       </li>
     <% end %>
   <% end %>

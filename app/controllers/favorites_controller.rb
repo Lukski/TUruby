@@ -1,6 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @results = current_user.favorites
+  end
+
   def create
     #back = params[:origin]
     current_user.favorites.create favorite_params

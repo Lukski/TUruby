@@ -1,4 +1,4 @@
-class ThesisController < ApplicationController
+class ThesisController < SearchableController
   def get_search(query)
     "https://tiss.tuwien.ac.at/api/search/thesis/v1.0/quickSearch?searchterm=#{query}"
   end

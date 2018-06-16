@@ -15,7 +15,13 @@
             <td><%= thesis["id"] %></td>
             <td><%= thesis["short"] %></td>
             <td><%= link_to "details", controller: "thesis", action: "detail", id: thesis["id"] %></td>
-            <td><%= link_to "favorite", controller: "favorites", action: "create", object_type: "thesis", tiss_id: thesis["id"] %></td>
+            <td>
+              <% if @favorite_ids.include? thesis['id'] %>
+                <%= link_to "unfavorite", deletefavorite_path(:thesis, thesis["id"]), method: :delete %>
+              <% else %>
+                <%= link_to "favorite", controller: "favorites", action: "create", object_type: :thesis, tiss_id: thesis["id"] %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
   </table>

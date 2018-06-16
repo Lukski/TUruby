@@ -8,6 +8,6 @@ class ThesisController < SearchableController
   end
 
   def self.object_type()
-    :person
+    :thesis
   end
 end

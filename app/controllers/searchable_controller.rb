@@ -27,7 +27,11 @@ class SearchableController < ApplicationController
       @favorite_ids=[]
       if @favorites
         @favorites.each do |result|
-          @favorite_ids << result.tiss_id.to_i
+          if result.tiss_id.to_i.digits.count == result.tiss_id.length
+            @favorite_ids << result.tiss_id.to_i
+          else
+            @favorite_ids << result.tiss_id
+          end
         end
       end
     end

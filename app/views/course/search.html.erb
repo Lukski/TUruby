@@ -16,7 +16,13 @@
           <td><%= course["title"] %></td>
           <td><%= course["short"] %></td>
           <td>x</td>
-          <td><%= link_to "favorite", controller: "favorites", action: "create", object_type: "course", tiss_id: course["id"] %></td>
+          <td>
+            <% if @favorite_ids.include? CourseController.get_id_from_json(course) %>
+              <%= link_to "unfavorite", deletefavorite_path(:course, CourseController.get_id_from_json(course)), method: :delete %>
+            <% else %>
+              <%= link_to "favorite", controller: "favorites", action: "create", object_type: :course, tiss_id: CourseController.get_id_from_json(course) %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>

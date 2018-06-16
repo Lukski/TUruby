@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'favorites/delete/:object_type/:tiss_id', to: 'favorites#delete', as: 'deletefavorite'
 
   get 'course/search', as: 'search_course'
+  get 'course/detail/:id', to: 'course#detail'
 
   get 'thesis/search', as: 'search_thesis'
   get 'thesis/detail/:id', to: 'thesis#detail'

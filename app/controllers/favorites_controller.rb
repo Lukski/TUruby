@@ -7,8 +7,26 @@ class FavoritesController < ApplicationController
     person_favorites.each do |person|
       query = PersonController.get_detail_url person.tiss_id
       uri = URI(query)
-      result = Nokogiri::HTML(open(uri))
+      result = [Nokogiri::HTML(open(uri)), person.tiss_id]
       @favorite_persons << result
+    end
+
+    course_favorites = current_user.favorites.where(object_type: CourseController.object_type)
+    @favorite_courses = []
+    course_favorites.each do |course|
+      query = CourseController.get_detail_url course.tiss_id
+      uri = URI(query)
+      result = [Nokogiri::HTML(open(uri)), course.tiss_id]
+      @favorite_courses << result
+    end
+
+    thesis_favorites = current_user.favorites.where(object_type: ThesisController.object_type)
+    @favorite_thesis = []
+    thesis_favorites.each do |thesis|
+      query = ThesisController.get_detail_url thesis.tiss_id
+      uri = URI(query)
+      result = [Nokogiri::HTML(open(uri)), thesis.tiss_id]
+      @favorite_thesis << result
     end
   end
 

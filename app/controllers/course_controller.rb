@@ -4,11 +4,11 @@ class CourseController < SearchableController
   end
 
   def self.get_detail_url(id)
-    "https://tiss.tuwien.ac.at/api/thesis/#{id}"
+    "https://tiss.tuwien.ac.at/api/course/#{id}"
   end
 
   def self.object_type()
-    :person
+    :course
   end
 
   def self.get_id_from_json(result)

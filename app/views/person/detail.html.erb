@@ -2,4 +2,6 @@
   <%= @result.xpath("//firstname").first.content %>
   <%= @result.xpath("//lastname").first.content %>
 </h1>
-<img src="<%= @result.xpath("//picture_uri").first.content %>">
+<% if @result.xpath("//picture_uri").first %>
+  <img src="<%= @result.xpath("//picture_uri").first.content %>">
+<% end %>

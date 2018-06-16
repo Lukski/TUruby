@@ -42,10 +42,6 @@ class SearchableController < ApplicationController
     end
   end
 
-  def self.get_favorites()
-    current_user.favorites.where(object_type: self.class.object_type)
-  end
-
   def self.get_id_from_json(result)
     result["id"]
   end

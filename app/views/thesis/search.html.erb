@@ -2,25 +2,21 @@
 
 <%= render "searchable/search" %>
 
-<ul>
-  <% if @results != nil %>
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Thesis ID</th>
-        <th>Beschreibung</th>
-        <th>Anzeigen</th>
-        <th>Favoriten</th>
-      </tr>
-          <% @results.each do |thesis| %>
-            <tr>
-              <td><%= thesis["id"] %></td>
-              <td><%= thesis["short"] %></td>
-              <td><%= link_to "details", controller: "thesis", action: "detail", id: thesis["id"] %></td>
-              <td><%= link_to "favorite", controller: "favorites", action: "create", object_type: "thesis", tiss_id: thesis["id"] %></td>
-            </tr>
-          <% end %>
-    </table>
-  <% end %>
-</ul>
-
-
+<% if @results != nil %>
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>Thesis ID</th>
+      <th>Beschreibung</th>
+      <th>Anzeigen</th>
+      <th>Favoriten</th>
+    </tr>
+        <% @results.each do |thesis| %>
+          <tr>
+            <td><%= thesis["id"] %></td>
+            <td><%= thesis["short"] %></td>
+            <td><%= link_to "details", controller: "thesis", action: "detail", id: thesis["id"] %></td>
+            <td><%= link_to "favorite", controller: "favorites", action: "create", object_type: "thesis", tiss_id: thesis["id"] %></td>
+          </tr>
+        <% end %>
+  </table>
+<% end %>

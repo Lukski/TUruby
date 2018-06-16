@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    person_favorites = PersonController.get_favorites
+    person_favorites = current_user.favorites.where(object_type: PersonController.object_type)
     @favorite_persons = []
     person_favorites.each do |person|
       query = PersonController.get_detail_url person.tiss_id
@@ -15,6 +15,12 @@ class FavoritesController < ApplicationController
   def create
     #back = params[:origin]
     current_user.favorites.create favorite_params
+    redirect_back fallback_location: 'people#search'
+  end
+
+  def delete
+    favorite = current_user.favorites.where favorite_params
+    favorite.destroy_all
     redirect_back fallback_location: 'people#search'
   end
 

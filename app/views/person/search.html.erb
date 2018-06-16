@@ -10,7 +10,7 @@
         <%= person["lastname"] %>
         <%= link_to "details", controller: "person", action: "detail", id: person["id"] %>
         <% if @favorite_ids.include? person['id'] %>
-          favorited
+          <%= link_to "unfavorite", deletefavorite_path(:person, person["id"]), method: :delete %>
         <% else %>
           <%= link_to "favorite", controller: "favorites", action: "create", object_type: :person, tiss_id: person["id"] %>
         <% end %>

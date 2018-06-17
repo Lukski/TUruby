@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'person#search'
+  root to: redirect("/favorites")
   get 'person/search', as: 'search_person'
   get 'person/detail/:id', to: 'person#detail'
 

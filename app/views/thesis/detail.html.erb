@@ -6,6 +6,12 @@
   <%= @result.xpath("//title//de").first.content %>
 </h2>
 
+<% if @is_favorite %>
+  <%= link_to "unfavorite", deletefavorite_path(:thesis, @id), method: :delete %>
+<% else %>
+  <%= link_to "favorite", controller: "favorites", action: "create", object_type: :thesis, tiss_id: @id %>
+<% end %>
+
 <p>
   Institut: <%= @result.xpath("//institutename//de").first.content %>
 </p>

@@ -52,7 +52,8 @@
           <ul>
             <% @favorite_project.each do |favorite| %>
               <li>
-                <%= favorite[0].xpath("//title//de").first.content %>
+                <%= favorite[0].xpath("//titlede").first.content %>
+                <%= favorite[0].xpath("//abstractde").first.content %>
                 <%= link_to "details", controller: "project", action: "detail", id: favorite[1] %>
                 <%= link_to "unfavorite", deletefavorite_path(:project, favorite[1]), method: :delete %>
               </li>

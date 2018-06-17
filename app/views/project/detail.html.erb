@@ -4,6 +4,12 @@
   <%= @result.xpath("//project//titlede").first.content %>
 </h1>
 
+<% if @is_favorite %>
+  <%= link_to "unfavorite", deletefavorite_path(:project, @id), method: :delete %><br/>
+<% else %>
+  <%= link_to "favorite", controller: "favorites", action: "create", object_type: :project, tiss_id: @id %><br/>
+<% end %>
+
 <p><b>Projekttyp:</b> <%= @result.xpath("//project//projectform").first.content %></p>
 
 <% if @result.xpath("//project//abstractde").first %>

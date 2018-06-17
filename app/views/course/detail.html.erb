@@ -2,6 +2,11 @@
   <%= @result.xpath("//course//title//de").first.content %>
 </h1>
 
+<% if @is_favorite %>
+  <%= link_to "unfavorite", deletefavorite_path(:course, @id), method: :delete %>
+<% else %>
+  <%= link_to "favorite", controller: "favorites", action: "create", object_type: :course, tiss_id: @id %>
+<% end %>
 
 <h2>Beschreibung</h2>
 <p>

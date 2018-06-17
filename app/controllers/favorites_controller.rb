@@ -35,7 +35,7 @@ class FavoritesController < ApplicationController
       query = ProjectController.get_detail_url project.tiss_id
       uri = URI(query)
       result = [Nokogiri::HTML(open(uri)), project.tiss_id]
-      @favorite_thesis << result
+      @favorite_project << result
     end
   end
 

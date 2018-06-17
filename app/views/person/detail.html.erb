@@ -22,6 +22,11 @@
           <%= @result.xpath("//lastname").first.content %>
         </h1>
         </p>
+        <% if @is_favorite %>
+          <%= link_to "unfavorite", deletefavorite_path(:person, @id), method: :delete %><br/>
+        <% else %>
+          <%= link_to "favorite", controller: "favorites", action: "create", object_type: :person, tiss_id: @id %><br/>
+        <% end %>
         <b>Telefon:</b> <%= @result.xpath("//main_phone_number").first.content %><br/>
         <b>E-Mail:</b> <%= @result.xpath("//main_email").first.content %>
       </div>

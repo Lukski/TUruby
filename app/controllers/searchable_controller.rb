@@ -43,6 +43,7 @@ class SearchableController < ApplicationController
       @tissquery = self.class.get_detail_url @id
       uri = URI(@tissquery)
       @result = Nokogiri::HTML(open(uri))
+      @is_favorite = current_user.favorites.exists?(object_type: self.class.object_type, tiss_id: "#{@id}")
     end
   end
 

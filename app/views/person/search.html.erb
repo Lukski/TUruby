@@ -14,7 +14,6 @@
       <div class="card-body">
         <h2 class="card-title">Nach Personen suchen</h2>
         <p class="card-text">
-        <ul>
           <% if @results != nil %>
             <% @results.each do |person| %>
               <li>
@@ -29,7 +28,6 @@
               </li>
             <% end %>
           <% end %>
-        </ul>
         </p>
       </div>
       <div class="card-footer text-muted">

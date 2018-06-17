@@ -21,4 +21,10 @@ class CourseController < SearchableController
     /semester=(?<semester>\d+[sSwW])/ =~ url
     return "#{coursenr}-#{semester}"
   end
+
+  def self.removetags(tagelement)
+    x = "" + tagelement
+    regex = /<("[^"]*"|'[^']*'|[^'">])*>/
+    return x.sub(regex,'')
+  end
 end

@@ -1,0 +1,18 @@
+<h1>
+  <%= @result.xpath("//course//title//de").first.content %>
+</h1>
+
+
+<h2>Beschreibung</h2>
+<p>
+  <%= raw CourseController.removetags(@result.xpath("//course//objective//de").first.content) %>
+</p>
+
+<h2>Inhalte der Lehrveranstaltung</h2>
+<p>
+  <%= raw CourseController.removetags(@result.xpath("//course//teachingcontent//de").first.content) %>
+</p>
+
+<p>
+  <b>Institut:</b>   <%= @result.xpath("//course//instutename//de") %>
+</p>

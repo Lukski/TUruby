@@ -28,6 +28,15 @@ class FavoritesController < ApplicationController
       result = [Nokogiri::HTML(open(uri)), thesis.tiss_id]
       @favorite_thesis << result
     end
+
+    project_favorites = current_user.favorites.where(object_type: ProjectController.object_type)
+    @favorite_project = []
+    project_favorites.each do |project|
+      query = ProjectController.get_detail_url project.tiss_id
+      uri = URI(query)
+      result = [Nokogiri::HTML(open(uri)), project.tiss_id]
+      @favorite_thesis << result
+    end
   end
 
   def create

@@ -1,20 +1,42 @@
-<h1>Search for some people</h1>
+<div class="row">
 
-<%= render "searchable/search" %>
+  <div class="col-md-4">
+    <div class="card my-4">
+      <h5 class="card-header">Suchfunktion</h5>
+      <div class="card-body">
+        <%= render "searchable/search" %>
+      </div>
+    </div>
+  </div>
 
-<ul>
-  <% if @results != nil %>
-    <% @results.each do |person| %>
-      <li>
-        <%= person["firstname"] %>
-        <%= person["lastname"] %>
-        <%= link_to "details", controller: "person", action: "detail", id: person["id"] %>
-        <% if @favorite_ids.include? person['id'] %>
-          <%= link_to "unfavorite", deletefavorite_path(:person, person["id"]), method: :delete %>
-        <% else %>
-          <%= link_to "favorite", controller: "favorites", action: "create", object_type: :person, tiss_id: person["id"] %>
-        <% end %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+  <div class="col-md-8">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title">Nach Personen suchen</h2>
+        <p class="card-text">
+        <ul>
+          <% if @results != nil %>
+            <% @results.each do |person| %>
+              <li>
+                <%= person["firstname"] %>
+                <%= person["lastname"] %>
+                <%= link_to "details", controller: "person", action: "detail", id: person["id"] %>
+                <% if @favorite_ids.include? person['id'] %>
+                  <%= link_to "unfavorite", deletefavorite_path(:person, person["id"]), method: :delete %>
+                <% else %>
+                  <%= link_to "favorite", controller: "favorites", action: "create", object_type: :person, tiss_id: person["id"] %>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        </p>
+      </div>
+      <div class="card-footer text-muted">
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

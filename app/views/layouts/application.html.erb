@@ -1,143 +1,81 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>TUruby</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<head>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <script>
-        $(document).ready( function () {
-            $('.table').DataTable({responsive: true});
-        } );
-    </script>
-    <style>
-      .well{
-        font-size: 1rem;
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <title>Bare - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <!-- Custom styles for this template -->
+  <style>
+    body {
+      padding-top: 54px;
+    }
+    @media (min-width: 992px) {
+      body {
+        padding-top: 56px;
       }
+    }
 
-      @media (min-width: 544px) {
-        .well {font-size:3rem;} /*1rem = 16px*/
-      }
+  </style>
 
-      /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-      @media (min-width: 768px) {
-        .well {font-size:3.5rem;} /*1rem = 16px*/
-      }
+</head>
 
-      /* Large devices (desktops, 992px and up) */
-      @media (min-width: 992px) {
-        .well {font-size:2.5rem;} /*1rem = 16px*/
-      }
+<body>
 
-      /* Extra large devices (large desktops, 1200px and up) */
-      @media (min-width: 1200px) {
-        .well {font-size:2.5rem;} /*1rem = 16px*/
-      }
-
-    </style>
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">TURuby</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-                <%= link_to "Personen", search_person_path %>
-            </li>
-            <li>
-              <%= link_to "Lehrveranstaltungen", search_course_path %>
-            </li>
-            <li>
-              <%= link_to "Arbeiten", search_thesis_path %>
-            </li>
-            <li>
-              <%= link_to "Favoriten", favorites_path %>
-            </li>
-            <li>
-              <%= link_to "Projekte", search_project_path %>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-            </li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container -->
-    </nav>
-    <br/><br/><br/><br/><br/><br/>
-    <!-- Page Content -->
-    <div class="container-fluid col-md-7 cuntainer">
-
-      <div class="row">
-
-        <!--<div class="col-md-3">
-          <p class="lead">Options</p>
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Option 1</a>
-            <a href="#" class="list-group-item">Option 2</a>
-            <a href="#" class="list-group-item">Option 3</a>
-          </div>
-        </div>-->
-
-        <div>
-
-          <div class="well">
-            <div class="row">
-              <div class="col-md-12">
-                <p class="notice"><%= notice %></p>
-                <p class="alert"><%= alert %></p>
-                <%= yield %>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">TU Ruby Explorer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Startseite
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Personen", search_person_path, { :class=>"nav-link" } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Lehrveranstaltungen", search_course_path, { :class=>"nav-link" } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Arbeiten", search_thesis_path, { :class=>"nav-link" } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Projekte", search_project_path, { :class=>"nav-link" } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Favoriten", favorites_path, { :class=>"nav-link" } %>
+        </li>
+      </ul>
     </div>
-    <!-- /.container -->
+  </div>
+</nav>
 
-    <div class="container">
+<!-- Page Content -->
+<div class="container" style="margin-top: 20px;">
+      <%= yield %>
+</div>
 
-      <hr>
+<!-- Bootstrap core JavaScript -->
 
-      <!-- Footer -->
-      <footer>
-        <div class="row">
-          <div class="col-lg-12">
-            <p>Copyright &copy; Your Website 2014</p>
-          </div>
-        </div>
-      </footer>
+</body>
 
-    </div>
-    <!-- /.container -->
-
-  </body>
 </html>

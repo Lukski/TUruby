@@ -1,7 +1,33 @@
-<h1>
-  <%= @result.xpath("//firstname").first.content %>
-  <%= @result.xpath("//lastname").first.content %>
-</h1>
-<% if @result.xpath("//picture_uri").first %>
-  <img src="<%= @result.xpath("//picture_uri").first.content %>">
-<% end %>
+
+<div class="row">
+
+  <div class="col-md-4">
+    <div class="card my-4">
+      <h5 class="card-header">Profilbild</h5>
+      <div class="card-body">
+        <% if @result.xpath("//picture_uri").first %>
+          <img class="img-fluid" src="<%= @result.xpath("//picture_uri").first.content %>">
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title"></h2>
+        <p class="card-text">
+        <h1>
+          <%= @result.xpath("//firstname").first.content %>
+          <%= @result.xpath("//lastname").first.content %>
+        </h1>
+        </p>
+        <b>Telefon:</b> <%= @result.xpath("//main_phone_number").first.content %><br/>
+        <b>E-Mail:</b> <%= @result.xpath("//main_email").first.content %>
+      </div>
+      <div class="card-footer text-muted">
+      </div>
+    </div>
+  </div>
+
+</div>

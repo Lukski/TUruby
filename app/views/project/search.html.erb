@@ -1,30 +1,50 @@
-<h1>Search for some Projects</h1>
+<div class="row">
 
-<%= render "searchable/search" %>
+  <div class="col-md-4">
+    <div class="card my-4">
+      <h5 class="card-header">Suchfunktion</h5>
+      <div class="card-body">
+        <%= render "searchable/search" %>
+      </div>
+    </div>
+  </div>
 
-<ul>
-  <% if @results != nil %>
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Kursname</th>
-        <th>Beschreibung</th>
-        <th>Anzeigen</th>
-        <th>Favoriten</th>
-      </tr>
-      <% @results.each do |project| %>
-        <tr>
-          <td><%= project["title"] %></td>
-          <td><%= project["short"] %></td>
-          <td><%= link_to "details", controller: "project", action: "detail", id: ProjectController.get_project_id_from_url(project["detail_url"]) %></td>
-          <td>
-            <% if @favorite_ids.include? ProjectController.get_project_id_from_url(project["detail_url"]) %>
-              <%= link_to "unfavorite", deletefavorite_path(:project, ProjectController.get_project_id_from_url(project["detail_url"])), method: :delete %>
-            <% else %>
-              <%= link_to "favorite", controller: "favorites", action: "create", object_type: :project, tiss_id: ProjectController.get_project_id_from_url(project["detail_url"]) %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
-</ul>
+  <div class="col-md-8">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title">Nach Projekten suchen</h2>
+        <p class="card-text">
+        <ul>
+          <% if @results != nil %>
+            <table class="table table-striped table-hover">
+              <tr>
+                <th>Kursname</th>
+                <th>Beschreibung</th>
+                <th>Anzeigen</th>
+                <th>Favoriten</th>
+              </tr>
+              <% @results.each do |project| %>
+                <tr>
+                  <td><%= project["title"] %></td>
+                  <td><%= project["short"] %></td>
+                  <td><%= link_to "details", controller: "project", action: "detail", id: ProjectController.get_project_id_from_url(project["detail_url"]) %></td>
+                  <td>
+                    <% if @favorite_ids.include? ProjectController.get_project_id_from_url(project["detail_url"]) %>
+                      <%= link_to "unfavorite", deletefavorite_path(:project, ProjectController.get_project_id_from_url(project["detail_url"])), method: :delete %>
+                    <% else %>
+                      <%= link_to "favorite", controller: "favorites", action: "create", object_type: :project, tiss_id: ProjectController.get_project_id_from_url(project["detail_url"]) %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %>
+        </ul>
+        </p>
+      </div>
+      <div class="card-footer text-muted">
+      </div>
+    </div>
+  </div>
+</div>
+

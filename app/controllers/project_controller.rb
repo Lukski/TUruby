@@ -17,4 +17,10 @@ class ProjectController < SearchableController
     return x[1]
   end
 
+  def self.removetags(tagelement)
+    x = "" + tagelement
+    regex = /<("[^"]*"|'[^']*'|[^'">])*>/
+    return x.sub(regex,'')
+  end
+
 end

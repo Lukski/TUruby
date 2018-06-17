@@ -1,4 +1,20 @@
+
+
 <h1>
   <%= @result.xpath("//project//titlede").first.content %>
 </h1>
 
+<p><b>Projekttyp:</b> <%= @result.xpath("//project//projectform").first.content %></p>
+
+<% if @result.xpath("//project//abstractde").first %>
+  <p>
+    <%= @result.xpath("//project//abstractde").first.content %>
+  </p>
+<% end %>
+
+<p>
+  <b>Keywords:</b>
+<% @result.xpath("//project//keywords//keyword//de").each do |keyword| %>
+  <%= ProjectController.removetags(keyword) %>,&nbsp;
+<% end %>
+</p>

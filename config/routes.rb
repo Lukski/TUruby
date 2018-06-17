@@ -13,5 +13,8 @@ Rails.application.routes.draw do
 
   get 'thesis/search', as: 'search_thesis'
   get 'thesis/detail/:id', to: 'thesis#detail'
+
+  get 'project/search', as: 'search_project'
+  get 'project/detail/:id', to: 'project#detail'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

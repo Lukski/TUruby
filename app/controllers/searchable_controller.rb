@@ -8,7 +8,7 @@ class SearchableController < ApplicationController
 
   def search
     @query = params[:q]
-    if @query != ""
+    if @query != "" and @query
       @tissquery = self.class.get_search @query
       uri = URI(@tissquery)
       response = Net::HTTP.get(uri)

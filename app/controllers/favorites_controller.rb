@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     person_favorites.each do |person|
       query = PersonController.get_detail_url person.tiss_id
       uri = URI(query)
-      result = [Nokogiri::HTML(open(uri)), person.tiss_id]
+      result = [Nokogiri::HTML(open(uri)), person.tiss_id, person.created_at]
       @favorite_persons << result
     end
 
@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
     course_favorites.each do |course|
       query = CourseController.get_detail_url course.tiss_id
       uri = URI(query)
-      result = [Nokogiri::HTML(open(uri)), course.tiss_id]
+      result = [Nokogiri::HTML(open(uri)), course.tiss_id, course.created_at]
       @favorite_courses << result
     end
 
@@ -25,7 +25,7 @@ class FavoritesController < ApplicationController
     thesis_favorites.each do |thesis|
       query = ThesisController.get_detail_url thesis.tiss_id
       uri = URI(query)
-      result = [Nokogiri::HTML(open(uri)), thesis.tiss_id]
+      result = [Nokogiri::HTML(open(uri)), thesis.tiss_id, thesis.created_at]
       @favorite_thesis << result
     end
 
@@ -34,7 +34,7 @@ class FavoritesController < ApplicationController
     project_favorites.each do |project|
       query = ProjectController.get_detail_url project.tiss_id
       uri = URI(query)
-      result = [Nokogiri::HTML(open(uri)), project.tiss_id]
+      result = [Nokogiri::HTML(open(uri)), project.tiss_id, project.created_at]
       @favorite_project << result
     end
   end

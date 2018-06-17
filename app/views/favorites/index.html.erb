@@ -8,57 +8,104 @@
       <div class="card-body">
         <h1>Personen: </h1>
         <% if @favorite_persons != nil %>
-          <ul>
-            <% @favorite_persons.each do |favorite| %>
-              <li>
-                <%= favorite[0].xpath("//firstname").first.content %>
-                <%= favorite[0].xpath("//lastname").first.content %>
-                <%= link_to "details", controller: "person", action: "detail", id: favorite[1] %>
-                <%= link_to "unfavorite", deletefavorite_path(:person, favorite[1]), method: :delete %>
-              </li>
-            <% end %>
-          </ul>
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>Vorname</th>
+              <th>Nachname</th>
+              <th>Hinzugefügt</th>
+              <th>Anzeigen</th>
+              <th>Favoriten</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @favorite_persons.each do |favorite| %>
+                <tr>
+                  <td><%= favorite[0].xpath("//firstname").first.content %></td>
+                  <td><%= favorite[0].xpath("//lastname").first.content %></td>
+                  <td><%= favorite[2] %></td>
+                  <td><%= link_to "details", controller: "person", action: "detail", id: favorite[1] %></td>
+                  <td><%= link_to "unfavorite", deletefavorite_path(:person, favorite[1]), method: :delete %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         <% end %>
 
         <h1>Kurse: </h1>
         <% if @favorite_courses != nil %>
-          <ul>
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>Kursnummer</th>
+              <th>Titel</th>
+              <th>Hinzugefügt</th>
+              <th>Anzeigen</th>
+              <th>Favoriten</th>
+            </tr>
+            </thead>
+            <tbody>
             <% @favorite_courses.each do |favorite| %>
-              <li>
-                <%= favorite[0].xpath("//coursenumber").first.content %>
-                <%= favorite[0].xpath("//title//de").first.content %>
-                <%= link_to "details", controller: "course", action: "detail", id: favorite[1] %>
-                <%= link_to "unfavorite", deletefavorite_path(:course, favorite[1]), method: :delete %>
-              </li>
+              <tr>
+                <td><%= favorite[0].xpath("//coursenumber").first.content %></td>
+                <td><%= favorite[0].xpath("//title//de").first.content %></td>
+                <td><%= favorite[2] %></td>
+                <td><%= link_to "details", controller: "course", action: "detail", id: favorite[1] %></td>
+                <td><%= link_to "unfavorite", deletefavorite_path(:course, favorite[1]), method: :delete %></td>
+              </tr>
             <% end %>
-          </ul>
+            </tbody>
+          </table>
         <% end %>
 
         <h1>Arbeiten: </h1>
         <% if @favorite_thesis != nil %>
-          <ul>
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>Titel</th>
+              <th>Hinzugefügt</th>
+              <th>Anzeigen</th>
+              <th>Favoriten</th>
+            </tr>
+            </thead>
+            <tbody>
             <% @favorite_thesis.each do |favorite| %>
-              <li>
-                <%= favorite[0].xpath("//title//de").first.content %>
-                <%= link_to "details", controller: "thesis", action: "detail", id: favorite[1] %>
-                <%= link_to "unfavorite", deletefavorite_path(:thesis, favorite[1]), method: :delete %>
-              </li>
+              <tr>
+                <td><%= favorite[0].xpath("//title//de").first.content %></td>
+                <td><%= favorite[2] %></td>
+                <td><%= link_to "details", controller: "thesis", action: "detail", id: favorite[1] %></td>
+                <td><%= link_to "unfavorite", deletefavorite_path(:thesis, favorite[1]), method: :delete %></td>
+              </tr>
             <% end %>
-          </ul>
+            </tbody>
+          </table>
         <% end %>
 
         <h1>Projekte: </h1>
         <% if @favorite_project != nil %>
-          <ul>
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>Titel</th>
+              <th>Abstract</th>
+              <th>Hinzugefügt</th>
+              <th>Anzeigen</th>
+              <th>Favoriten</th>
+            </tr>
+            </thead>
+            <tbody>
             <% @favorite_project.each do |favorite| %>
-              <li>
-                <%= favorite[0].xpath("//titlede").first.content %>
-                <%= favorite[0].xpath("//abstractde").first.content %>
-                <%= link_to "details", controller: "project", action: "detail", id: favorite[1] %>
-                <%= link_to "unfavorite", deletefavorite_path(:project, favorite[1]), method: :delete %>
-              </li>
+              <tr>
+                <td><%= favorite[0].xpath("//titlede").first.content %></td>
+                <td><%= favorite[0].xpath("//abstractde").first.content %></td>
+                <td><%= favorite[2] %></td>
+                <td><%= link_to "details", controller: "project", action: "detail", id: favorite[1] %></td>
+                <td><%= link_to "unfavorite", deletefavorite_path(:project, favorite[1]), method: :delete %></td>
+              </tr>
             <% end %>
-          </ul>
+            </tbody>
+          </table>
         <% end %>
       </div>
     </div>

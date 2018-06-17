@@ -16,12 +16,15 @@
         <p class="card-text">
           <% if @results != nil %>
             <table class="table table-striped table-hover">
-              <tr>
-                <th>Kursname</th>
-                <th>Beschreibung</th>
-                <th>Anzeigen</th>
-                <th>Favoriten</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Kursname</th>
+                  <th>Beschreibung</th>
+                  <th>Anzeigen</th>
+                  <th>Favoriten</th>
+                </tr>
+              </thead>
+              <tbody>
               <% @results.each do |project| %>
                 <tr>
                   <td><%= project["title"] %></td>
@@ -36,6 +39,7 @@
                   </td>
                 </tr>
               <% end %>
+              </tbody>
             </table>
           <% end %>
         </p>

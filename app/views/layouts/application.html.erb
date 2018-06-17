@@ -14,7 +14,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <title>Bare - Start Bootstrap Template</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css">
+
+  <script>
+      $(document).ready( function () {
+          $('.table').DataTable({responsive: true});
+      } );
+  </script>
+
+  <title>TU Ruby Explorer</title>
 
   <!-- Bootstrap core CSS -->
 
@@ -75,6 +83,7 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
 
 </body>
 

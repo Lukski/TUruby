@@ -16,11 +16,14 @@
         <p class="card-text">
           <% if @results != nil %>
             <table class="table table-striped table-hover">
+              <thead>
               <tr>
                 <th>Kursname</th>
                 <th>Anzeigen</th>
                 <th>Favoriten</th>
               </tr>
+              </thead>
+              <tbody>
               <% @results.each do |course| %>
                 <tr>
                   <td><%= course["title"] %></td>
@@ -34,6 +37,7 @@
                   </td>
                 </tr>
               <% end %>
+              </tbody>
             </table>
           <% end %>
         </p>
